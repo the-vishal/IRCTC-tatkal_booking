@@ -22,6 +22,13 @@ phone_no = '9115XXXXXX'
 
 
 
+#passengers details [Name, age, gender ,birth_choice]
+passenger_details = [
+    ['VISHAL KUMAR','20','M','LB'],
+    ['VIKAS KUMAR','24','M','LB']
+    ]
+
+
 
 
 #***********************************************************
@@ -43,13 +50,6 @@ user = cursor.fetchall()[0][0]
 conn.close()
 
 pasw = keyring.get_password('irctc', user)
-
-
-#passengers details [Name, age, gender ,birth_choice]
-passenger_details = [
-    ['VISHAL KUMAR','20','M','LB'],
-    ['VIKAS KUMAR','24','M','LB']
-    ]
 
 
 #gender xpaths
