@@ -2,33 +2,54 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import keyboard
 import time
+import sqlite3
 import keyring
+from win10toast import ToastNotifier
 
 
-#login details in keyring module
-user = 'Kumarv0007'
-pasw = keyring.get_password('irctc', user)
 
+#***********************************************************
 
 #journey details
+
 from_station = 'AMBALA CANT JN - UMB'
-to_station ='VARANASI JN - BSB'
+to_station ='BHABUA ROAD - BBU'
 date = '26-05-2018'
 train_no = '13152'
-class_ = 'SL'
+class_ = '3A'
 quota = 'GN'
-phone_no = '91150XXXXX'
+phone_no = '9115073633'
+
+
+
+
+
+#***********************************************************
+
+
+def captcha_msg():
+    toaster = ToastNotifier()
+    toaster.show_toast(title='IRCTC',msg='Enter CAPTCHA value', icon_path='train1.ico')
+
+
+
+#***********************************************************
+#login details in keyring module
+conn = sqlite3.connect('Booking_Details.db')
+cursor = conn.cursor()
+
+cursor.execute('''SELECT NAME FROM user''')
+user = cursor.fetchall()[0][0]
+conn.close()
+
+pasw = keyring.get_password('irctc', user)
 
 
 #passengers details [Name, age, gender ,birth_choice]
 passenger_details = [
-    ['VISHAL KUMAR','20','M','LB'],
-    ['VIKAS KUMAR','24','M','LB']
+    ['GUPTESHWAR DUBEY','57','M','LB'],
+    ['INDU DEVI','50','F','LB']
     ]
-
-
-#**********************END  OF  PASSENGERS  DETAILS*************************
-
 
 
 #gender xpaths
@@ -64,6 +85,7 @@ password.send_keys(pasw)
 #presses tab key to goto captcha entry
 password.send_keys(Keys.TAB)
 
+captcha_msg()
 
 #for captcha entering, press enter after entering captcha or wait for click
 while True:
@@ -172,6 +194,8 @@ ticket_phone_no.clear()
 ticket_phone_no.send_keys(phone_no)
 
 
+captcha_msg()
+
 
 #take to the captcha input if input captcha else in click captcha pass
 try:
@@ -193,5 +217,5 @@ while True:
 
 #Payment Section
 browser.find_element_by_id('AGGREGATOR').click()
-browser.find_element_by_xpath('//*[@id="AGGREGATOR"]').click()
+browser.find_element_by_name('AGGREGATOR').click()
 browser.find_element_by_xpath('//*[@id="validate"]').click()
