@@ -13,12 +13,12 @@ from win10toast import ToastNotifier
 #journey details
 
 from_station = 'AMBALA CANT JN - UMB'
-to_station ='BHABUA ROAD - BBU'
+to_station ='VARANASI JN - BSB'
 date = '26-05-2018'
 train_no = '13152'
 class_ = '3A'
 quota = 'GN'
-phone_no = '9115073633'
+phone_no = '9115XXXXXX'
 
 
 
@@ -47,8 +47,8 @@ pasw = keyring.get_password('irctc', user)
 
 #passengers details [Name, age, gender ,birth_choice]
 passenger_details = [
-    ['GUPTESHWAR DUBEY','57','M','LB'],
-    ['INDU DEVI','50','F','LB']
+    ['VISHAL KUMAR','20','M','LB'],
+    ['VIKAS KUMAR','24','M','LB']
     ]
 
 
