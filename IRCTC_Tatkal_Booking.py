@@ -70,7 +70,7 @@ birth_pref = {
 
 #initializing driver
 browser = webdriver.Chrome()
-url ="https://www.irctc.co.in/eticketing/loginHome.jsf"
+url ="https://www.irctc.co.in/nget/train-search"
 
 #opening url
 browser.get(url)
